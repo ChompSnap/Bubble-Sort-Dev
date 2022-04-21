@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,11 @@ public class Bubble : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    // Basically todo 1 should go here
+    private void OnCollisionEnter2D(Collision2D col)
     {
         
     }
