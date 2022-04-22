@@ -215,6 +215,22 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4655853954639766774, guid: 692427ddd61c4334dbea218d92a2149b, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 65a7af2be0d33c64cb47888540cc2528, type: 2}
+    - target: {fileID: -4655853954639766774, guid: 692427ddd61c4334dbea218d92a2149b, type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4655853954639766774, guid: 692427ddd61c4334dbea218d92a2149b, type: 3}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 65a7af2be0d33c64cb47888540cc2528, type: 2}
+    - target: {fileID: 5521321774888820699, guid: 692427ddd61c4334dbea218d92a2149b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 481591434, guid: e07cd649365907541885f9f15ac33a47, type: 3}
     - target: {fileID: 6754816948611173133, guid: 692427ddd61c4334dbea218d92a2149b, type: 3}
       propertyPath: m_Name
       value: Red Bubble
