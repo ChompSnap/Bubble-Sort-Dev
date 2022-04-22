@@ -5,7 +5,9 @@ public class Shooter : MonoBehaviour
 {
     public Transform gunSprite;
     public bool canShoot;
-    public float speed = 6f;
+    public float speed = 150f;
+    public float rotation = 0;
+    private float rotateHold;
 
     public Transform nextBubblePosition;
     public GameObject currentBubble;
@@ -18,11 +20,28 @@ public class Shooter : MonoBehaviour
 
     public void Update()
     {
-        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        gunSprite.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
+        //This function acts as the player controller and rotates the launcher up to 90 degrees on either side
+        if (Input.GetKey(KeyCode.A))
+        {
+            rotateHold = rotation + 1.0f * speed * Time.deltaTime;
+            if (rotateHold < 90)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, rotateHold);
+                rotation = rotateHold;
+                Debug.Log(rotateHold);
+            }
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            rotateHold = rotation + -1.0f * speed * Time.deltaTime;
+            if (rotateHold > -90)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, rotateHold);
+                rotation = rotateHold;
+            }
+        }
 
-        if(isSwaping)
+        if (isSwaping)
         {
             if(Vector2.Distance(currentBubble.transform.position, nextBubblePosition.position) <= 0.2f
                 && Vector2.Distance(nextBubble.transform.position, transform.position) <= 0.2f)
