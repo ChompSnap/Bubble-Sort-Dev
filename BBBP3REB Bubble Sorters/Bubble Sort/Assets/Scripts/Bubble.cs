@@ -12,6 +12,7 @@ public class Bubble : MonoBehaviour
 
     public BubbleColor bubbleColor;
 
+    //Checks if it collides with a bubble of the same color and pops if it matches 3
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bubble" && collision.gameObject.GetComponent<Bubble>().isFixed)
@@ -33,6 +34,7 @@ public class Bubble : MonoBehaviour
 
     private void HasCollided()
     {
+        //This gets the rigid body of the bubble then destroys it and updates it to the level manager
         var rb = GetComponent<Rigidbody2D>();
         Destroy(rb);
         isFixed = true;
@@ -73,8 +75,9 @@ public class Bubble : MonoBehaviour
         Gizmos.color = Color.red;
     }
 
+    //Dictates what color the bubble is
     public enum BubbleColor
     {
-        BLUE, YELLOW, RED, GREEN
+        BLUE, YELLOW, RED, GREEN, PURPLE, ORANGE
     }
 }

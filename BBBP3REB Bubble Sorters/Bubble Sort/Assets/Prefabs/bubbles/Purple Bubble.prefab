@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 924809597087614167}
   - component: {fileID: 6350222562748444263}
   - component: {fileID: 4398076416977713230}
+  - component: {fileID: 8836750843584214299}
   m_Layer: 0
   m_Name: Purple Bubble
-  m_TagString: Untagged
+  m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,3 +123,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8836750843584214299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168534608811764097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329107f3a73ba419fba32bdc319eeae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastRange: 0.7
+  raycastOffset: 0.51
+  isFixed: 1
+  isConnected: 1
+  bubbleColor: 4

@@ -18,9 +18,12 @@ public class Shooter : MonoBehaviour
 
     public void Update()
     {
+        //Rotating the launcher
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
         gunSprite.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
+
+
 
         if(isSwaping)
         {
