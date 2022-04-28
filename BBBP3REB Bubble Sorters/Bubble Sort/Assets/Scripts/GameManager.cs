@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour
     private int sequenceSize = 3;
     [SerializeField]
     private List<Transform> bubbleSequence;
+
+    public delegate void bubblePop(int score);
+
+    public static event bubblePop addScore;
 
     void Start()
     {
@@ -88,6 +93,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
+        addScore?.Invoke(100 * bubbleSequence.Count);
     }
 
     private void DropDisconectedBubbles()
@@ -95,6 +101,7 @@ public class GameManager : MonoBehaviour
         SetAllBubblesConnectionToFalse();
         SetConnectedBubblesToTrue();
         SetGravityToDisconectedBubbles();
+        
     }
 
     #region Drop Disconected Bubbles
@@ -116,6 +123,7 @@ public class GameManager : MonoBehaviour
         {
             if (hits[i].transform.gameObject.tag.Equals("Bubble"))
                 SetNeighboursConnectionToTrue(hits[i].transform);
+            
         }
     }
 

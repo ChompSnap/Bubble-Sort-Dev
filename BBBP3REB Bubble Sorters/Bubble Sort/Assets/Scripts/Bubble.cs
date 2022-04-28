@@ -11,7 +11,6 @@ public class Bubble : MonoBehaviour
     public bool isConnected;
 
     public BubbleColor bubbleColor;
-
     //Checks if it collides with a bubble of the same color and pops if it matches 3
     private void OnCollisionEnter2D(Collision2D collision)
     {
