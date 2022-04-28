@@ -1,39 +1,80 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-//TODO 1: Make it we're able to detect when 3 or more matching bubbles are touching
-/*
-    Current idea:
-    After firing bubble we check collisions, if any match color we store these game objects into an array 
-    We check to see if after collision if touching bubbles are matching color if they are we store them into the array 
-*/
-//TODO 2: Destroy all of the bubbles that are touching 
-/*
-    At this point we know that all bubbles are matching so we pop em 
- */
-//TODO 3: Make it so bubbles that are only touching any of those 3 bubbles fall down, just destroy them early on 
-/*
-    We should have checks for surrounding bubbles on the ends of the array, if they arent touching the walls/roof 
-    we drop them, play an animation and then destroy 
- */
 public class Bubble : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float raycastRange = 0.7f;
+    public float raycastOffset = 0.51f;
+
+    public bool isFixed;
+    public bool isConnected;
+
+    public BubbleColor bubbleColor;
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.tag == "Bubble" && collision.gameObject.GetComponent<Bubble>().isFixed)
+        {
+            if (!isFixed)
+            {
+                HasCollided();
+            }
+        }
+
+        if (collision.gameObject.tag == "Limit")
+        {
+            if (!isFixed)
+            {
+                HasCollided();
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void HasCollided()
     {
-        
+        var rb = GetComponent<Rigidbody2D>();
+        Destroy(rb);
+        isFixed = true;
+        LevelManager.instance.SetAsBubbleAreaChild(transform);
+        GameManager.instance.ProcessTurn(transform);
     }
-    // Basically todo 1 should go here
-    private void OnCollisionEnter2D(Collision2D col)
+
+    public List<Transform> GetNeighbors()
     {
-        
+        List<RaycastHit2D> hits = new List<RaycastHit2D>();
+        List<Transform> neighbors = new List<Transform>();
+
+        hits.Add(Physics2D.Raycast(new Vector2(transform.position.x - raycastOffset, transform.position.y), Vector3.left, raycastRange));
+        hits.Add(Physics2D.Raycast(new Vector2(transform.position.x + raycastOffset, transform.position.y), Vector3.right, raycastRange));
+        hits.Add(Physics2D.Raycast(new Vector2(transform.position.x - raycastOffset, transform.position.y + raycastOffset), new Vector2(-1f, 1f), raycastRange));
+        hits.Add(Physics2D.Raycast(new Vector2(transform.position.x - raycastOffset, transform.position.y - raycastOffset), new Vector2(-1f, -1f), raycastRange));
+        hits.Add(Physics2D.Raycast(new Vector2(transform.position.x + raycastOffset, transform.position.y + raycastOffset), new Vector2(1f, 1f), raycastRange));
+        hits.Add(Physics2D.Raycast(new Vector2(transform.position.x + raycastOffset, transform.position.y - raycastOffset), new Vector2(1f, -1f), raycastRange));
+
+        foreach(RaycastHit2D hit in hits)
+        {
+            if(hit.collider != null && hit.transform.tag.Equals("Bubble"))
+            {
+                neighbors.Add(hit.transform);
+            }
+        }
+
+        return neighbors;
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+    }
+
+    public enum BubbleColor
+    {
+        BLUE, YELLOW, RED, GREEN
     }
 }

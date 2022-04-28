@@ -1,13 +1,11 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
     public Transform gunSprite;
     public bool canShoot;
-    public float speed = 150f;
-    public float rotation = 0;
-    private float rotateHold;
+    public float speed = 6f;
 
     public Transform nextBubblePosition;
     public GameObject currentBubble;
@@ -20,28 +18,11 @@ public class Shooter : MonoBehaviour
 
     public void Update()
     {
-        //This function acts as the player controller and rotates the launcher up to 90 degrees on either side
-        if (Input.GetKey(KeyCode.A))
-        {
-            rotateHold = rotation + 1.0f * speed * Time.deltaTime;
-            if (rotateHold < 90)
-            {
-                transform.rotation = Quaternion.Euler(0f, 0f, rotateHold);
-                rotation = rotateHold;
-                Debug.Log(rotateHold);
-            }
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            rotateHold = rotation + -1.0f * speed * Time.deltaTime;
-            if (rotateHold > -90)
-            {
-                transform.rotation = Quaternion.Euler(0f, 0f, rotateHold);
-                rotation = rotateHold;
-            }
-        }
+        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        gunSprite.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
 
-        if (isSwaping)
+        if(isSwaping)
         {
             if(Vector2.Distance(currentBubble.transform.position, nextBubblePosition.position) <= 0.2f
                 && Vector2.Distance(nextBubble.transform.position, transform.position) <= 0.2f)
@@ -72,49 +53,49 @@ public class Shooter : MonoBehaviour
         currentBubble = null;
     }
 
-    // [ContextMenu("SwapBubbles")]
-    // public void SwapBubbles()
-    // {
-    //     currentBubble.GetComponent<Collider2D>().enabled = false;
-    //     nextBubble.GetComponent<Collider2D>().enabled = false;
-    //     isSwaping = true;
-    // }
-    //
-    // [ContextMenu("CreateNextBubble")]
-    // public void CreateNextBubble()
-    // {
-    //     List<GameObject> bubblesInScene = LevelManager.instance.bubblesInScene;
-    //     List<string> colors = LevelManager.instance.colorsInScene;
-    //
-    //     if (nextBubble == null)
-    //     {
-    //         nextBubble = InstantiateNewBubble(bubblesInScene);
-    //     }
-    //     else
-    //     {
-    //         if(!colors.Contains(nextBubble.GetComponent<Bubble>().bubbleColor.ToString()))
-    //         {
-    //             Destroy(nextBubble);
-    //             nextBubble = InstantiateNewBubble(bubblesInScene);
-    //         }
-    //     }
-    //
-    //     if(currentBubble == null)
-    //     {
-    //         currentBubble = nextBubble;
-    //         currentBubble.transform.position = new Vector2(transform.position.x, transform.position.y);
-    //         nextBubble = InstantiateNewBubble(bubblesInScene);
-    //     }
-    // }
-    //
-    // private GameObject InstantiateNewBubble(List<GameObject> bubblesInScene)
-    // {
-    //     GameObject newBubble = Instantiate(bubblesInScene[(int)(Random.Range(0, bubblesInScene.Count * 1000000f) / 1000000f)]);
-    //     newBubble.transform.position = new Vector2(nextBubblePosition.position.x, nextBubblePosition.position.y);
-    //     newBubble.GetComponent<Bubble>().isFixed = false;
-    //     Rigidbody2D rb2d = newBubble.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
-    //     rb2d.gravityScale = 0f;
-    //
-    //     return newBubble;
-    // }
+    [ContextMenu("SwapBubbles")]
+    public void SwapBubbles()
+    {
+        currentBubble.GetComponent<Collider2D>().enabled = false;
+        nextBubble.GetComponent<Collider2D>().enabled = false;
+        isSwaping = true;
+    }
+
+    [ContextMenu("CreateNextBubble")]
+    public void CreateNextBubble()
+    {
+        List<GameObject> bubblesInScene = LevelManager.instance.bubblesInScene;
+        List<string> colors = LevelManager.instance.colorsInScene;
+
+        if (nextBubble == null)
+        {
+            nextBubble = InstantiateNewBubble(bubblesInScene);
+        }
+        else
+        {
+            if(!colors.Contains(nextBubble.GetComponent<Bubble>().bubbleColor.ToString()))
+            {
+                Destroy(nextBubble);
+                nextBubble = InstantiateNewBubble(bubblesInScene);
+            }
+        }
+
+        if(currentBubble == null)
+        {
+            currentBubble = nextBubble;
+            currentBubble.transform.position = new Vector2(transform.position.x, transform.position.y);
+            nextBubble = InstantiateNewBubble(bubblesInScene);
+        }
+    }
+
+    private GameObject InstantiateNewBubble(List<GameObject> bubblesInScene)
+    {
+        GameObject newBubble = Instantiate(bubblesInScene[(int)(Random.Range(0, bubblesInScene.Count * 1000000f) / 1000000f)]);
+        newBubble.transform.position = new Vector2(nextBubblePosition.position.x, nextBubblePosition.position.y);
+        newBubble.GetComponent<Bubble>().isFixed = false;
+        Rigidbody2D rb2d = newBubble.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
+        rb2d.gravityScale = 0f;
+
+        return newBubble;
+    }
 }
