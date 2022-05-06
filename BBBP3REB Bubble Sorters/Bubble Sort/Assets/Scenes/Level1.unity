@@ -2348,7 +2348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunSprite: {fileID: 1654322497}
   canShoot: 0
-  speed: 6
+  speed: 15
   nextBubblePosition: {fileID: 459004700}
   currentBubble: {fileID: 0}
   nextBubble: {fileID: 0}
@@ -2511,8 +2511,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6874,7 +6874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23600002, y: 0.9287915}
   m_AnchorMax: {x: 0.363, y: 1}
-  m_AnchoredPosition: {x: 24.600006, y: -2.2999878}
+  m_AnchoredPosition: {x: 59.899994, y: -2}
   m_SizeDelta: {x: 36, y: -4}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1608115551
@@ -6907,8 +6907,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
