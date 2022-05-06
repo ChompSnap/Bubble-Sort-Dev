@@ -1,6 +1,6 @@
-rrrrrrrrrrrrrrrr
- oooooooooooooo
-  yyyyyyyyyyyy
-   gggggggggg
-    bbbbbbbb
-     pppppp
+rrrrrrrr
+oooooooo
+yyyyyyyy
+gggggggg
+bbbbbbbb
+pppppppp
