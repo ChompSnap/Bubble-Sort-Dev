@@ -3,7 +3,20 @@ guid: 5e1261cc2539248c7928032aa22fae61
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RedPrefab: {fileID: 6754816948611173133, guid: 692427ddd61c4334dbea218d92a2149b,
+      type: 3}
+  - BluePrefab: {fileID: 4590601829348986675, guid: b7654442200487346b5c231b9700b3c2,
+      type: 3}
+  - GreenPrefab: {fileID: 7337603446964492169, guid: 3051651ed7c37274a9f2575fcf938a6f,
+      type: 3}
+  - YellowPrefab: {fileID: 7195428099846754788, guid: 7ad0ee1a468ed1d4baaf2bdebfab40ea,
+      type: 3}
+  - OrangePrefab: {fileID: 8353471342514922487, guid: 708315a3994a2e74f9cbc6a1e91aad1e,
+      type: 3}
+  - PurplePrefab: {fileID: 6168534608811764097, guid: f099dc251fb050947b180f903c12eaf7,
+      type: 3}
+  - levelRoot: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

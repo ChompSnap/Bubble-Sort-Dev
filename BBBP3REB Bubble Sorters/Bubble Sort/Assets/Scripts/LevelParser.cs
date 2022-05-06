@@ -6,6 +6,8 @@ using UnityEngine.Serialization;
 
 public class LevelParser : MonoBehaviour
 {
+    public Grid grid;
+    public Transform bubblesArea;
     public string filename;
 
     [FormerlySerializedAs("redBubble")] 
@@ -21,27 +23,33 @@ public class LevelParser : MonoBehaviour
     [FormerlySerializedAs("purpleBubble")] 
     public GameObject PurplePrefab;
     
-    public Transform levelRoot;
+    public float offset = 1f;
+    public GameObject leftLine;
+    public GameObject rightLine;
+    private bool lastLineIsLeft = true;
+    //public Transform levelRoot;
+    
     // Start is called before the first frame update
     void Start()
     {
         LoadLevel();
+        grid = GetComponent<Grid>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReloadLevel();
-        }
+       // if (Input.GetKeyDown(KeyCode.R))
+       // {
+       //     ReloadLevel();
+       // }
     }
 
     private void LoadLevel()
     {
-        string fileToParse = $"{Application.dataPath}{"/Resources/"}{filename}.txt";
+        string fileToParse = $"{Application.dataPath}{"/Resource/"}{filename}.txt";
         Debug.Log($"Loading level file: {fileToParse}");
-        
+        SnapChildrensToGrid(bubblesArea);
         Stack<string> levelRows = new Stack<string>();
         
         // Get each line of text representing blocks in our level
@@ -76,32 +84,33 @@ public class LevelParser : MonoBehaviour
                 
                 if (letter == 'r')
                 {
-                    redObject.transform.position = new Vector3(column, row, 0f);
+                    redObject.transform.position = new Vector2(column, row);
+                    //redObject.transform.position = new Vector3(column, row, 0f);
                 }
                 
                 if (letter == 'b')
                 {
-                    blueObject.transform.position = new Vector3(column, row, 0f);
+                    blueObject.transform.position = new Vector2(column, row);
                 }
                 
                 if (letter == 'g')
                 {
-                    greenObject.transform.position = new Vector3(column, row, 0f);
+                    greenObject.transform.position = new Vector2(column, row);
                 }
 
                 if (letter == 'y')
                 {
-                    yellowObject.transform.position = new Vector3(column, row, 0f);
+                    yellowObject.transform.position = new Vector2(column, row);
                 }
 
                 if (letter == 'o')
                 {
-                    orangeObject.transform.position = new Vector3(column, row, 0f);
+                    orangeObject.transform.position = new Vector2(column, row);
                 }
 
                 if (letter == 'p')
                 {
-                    purpleObject.transform.position = new Vector3(column, row, 0f);
+                    purpleObject.transform.position = new Vector2(column, row);
                 }
                 
                 // Position the new GameObject at the appropriate location by using row and column
@@ -113,12 +122,55 @@ public class LevelParser : MonoBehaviour
         
     }
     
-    private void ReloadLevel()
+ //   private void ReloadLevel()
+ //   {
+ //       foreach (Transform child in levelRoot)
+ //       {
+ //           Destroy(child.gameObject);
+ //       }
+ //       LoadLevel();
+ //   }
+    
+    private void SnapChildrensToGrid(Transform parent)
     {
-        foreach (Transform child in levelRoot)
+        foreach (Transform t in parent)
         {
-            Destroy(child.gameObject);
+            SnapToNearestGripPosition(t);
         }
-        LoadLevel();
+    }
+    
+    public void SnapToNearestGripPosition(Transform t)
+    {
+        Vector3Int cellPosition = grid.WorldToCell(t.position);
+        t.position = grid.GetCellCenterWorld(cellPosition);
+    }
+    
+    public void SetAsBubbleAreaChild(Transform bubble)
+    {
+        SnapToNearestGripPosition(bubble);
+        bubble.SetParent(bubblesArea);
+    }
+    
+    public void AddNewLine()
+    {
+        OffsetGrid();
+        OffsetBubblesInScene();
+        GameObject newLine = lastLineIsLeft == true ? Instantiate(rightLine) : Instantiate(leftLine); 
+        //FillWithBubbles(newLine, bubblesInScene);
+        SnapChildrensToGrid(bubblesArea);
+        lastLineIsLeft = !lastLineIsLeft;
+    }
+
+    private void OffsetGrid()
+    {
+        transform.position = new Vector2(transform.position.x, transform.position.y - offset);
+    }
+
+    private void OffsetBubblesInScene()
+    {
+        foreach (Transform t in bubblesArea)
+        {
+            t.transform.position = new Vector2(t.position.x, t.position.y - offset);
+        }
     }
 }
