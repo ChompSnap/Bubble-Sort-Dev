@@ -10,11 +10,15 @@ public class LoseBox : MonoBehaviour
     public static event bubbleFell add500;
 
     public BoxCollider2D box;
+
+    public GameObject mikoFace;
+    public Animator mikoFaceAnim;
     
     // Start is called before the first frame update
     void Start()
     {
         box = gameObject.GetComponent<BoxCollider2D>();
+        mikoFaceAnim = mikoFace.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -34,6 +38,7 @@ public class LoseBox : MonoBehaviour
             
             //We destroy the game object so it can't bump into the bubble in the cannon or the one being held 
             Destroy(col.gameObject);
+            mikoFaceAnim.Play("HappyFace", 0, 0);
         }
     }
 }

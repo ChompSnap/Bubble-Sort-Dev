@@ -4,6 +4,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     public Transform gunSprite;
+    public Animator firingAnim;
     public bool canShoot;
     public float speed = 6f;
 
@@ -54,6 +55,7 @@ public class Shooter : MonoBehaviour
         currentBubble.transform.rotation = transform.rotation;
         currentBubble.GetComponent<Rigidbody2D>().AddForce(currentBubble.transform.up * speed, ForceMode2D.Impulse);
         currentBubble.transform.parent = null;
+        firingAnim.Play("GunShoot", 0, 0);
         currentBubble = null;
     }
 
