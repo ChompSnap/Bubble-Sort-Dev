@@ -4,6 +4,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     public Transform gunSprite;
+    public Animator firingAnim;
     public bool canShoot;
     public float speed = 6f;
 
@@ -53,6 +54,8 @@ public class Shooter : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
         currentBubble.transform.rotation = transform.rotation;
         currentBubble.GetComponent<Rigidbody2D>().AddForce(currentBubble.transform.up * speed, ForceMode2D.Impulse);
+        currentBubble.transform.parent = null;
+        firingAnim.Play("GunShoot", 0, 0);
         currentBubble = null;
     }
 
@@ -86,7 +89,8 @@ public class Shooter : MonoBehaviour
         if(currentBubble == null)
         {
             currentBubble = nextBubble;
-            currentBubble.transform.position = new Vector2(transform.position.x, transform.position.y);
+            currentBubble.transform.parent = gunSprite;
+            currentBubble.transform.position = gunSprite.GetChild(0).position;
             nextBubble = InstantiateNewBubble(bubblesInScene);
         }
     }

@@ -70,7 +70,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -211,13 +211,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Miko_ShootStance
+      name: Miko_Idle_0
       rect:
         serializedVersion: 2
         x: 14
-        y: 385
+        y: 381
         width: 27
-        height: 31
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,6 +227,237 @@ TextureImporter:
       bones: []
       spriteID: be4f0ca7e3e281241bdf3ab96281f19c
       internalID: 127947290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gun_Shoot_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 450
+        width: 25
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f407a65a6625ae34c88528e9628b4871
+      internalID: -966857873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gun_Shoot_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 450
+        width: 25
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1163ab914d45b9f4b9fedf51bb9204c4
+      internalID: -1989431891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miko_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 381
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d5a651959a5034f8913076d38bb10c
+      internalID: 1518865991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miko_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 381
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a21c1d5e3b5bc864d918f3d3d9f2dab3
+      internalID: 232163037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miko_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 381
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0621b49dcdc123a428efa63e75a2da86
+      internalID: 851237729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miko_Defeat_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 333
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9ae641a371a3c841b70e775256eb52b
+      internalID: 936946578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miko_Defeat_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 329
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e1a3ba7d2bd3e4d8abdc0b8993543d
+      internalID: -1559977030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miko_Defeat_2
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 329
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eead6f6b2b6a454aa0ca87fe7a0a8c4
+      internalID: -884774538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miko_Defeat_3
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 329
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692cf6850b3800f4da21ff17cb1f10dd
+      internalID: -468901245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gun_Shoot_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 450
+        width: 25
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b692ad68ba2353a4bb23755929d2cc90
+      internalID: 1836934545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gun_Shoot_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 450
+        width: 25
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a660e2078dc5fd143adfade26ccb02d6
+      internalID: 1551298523
       vertices: []
       indices: 
       edges: []
@@ -242,11 +473,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Miko_Defeat_2: -884774538
       Miko_Happy: 1415213003
+      Gun_Shoot_1: 1551298523
+      Miko_Idle_1: 232163037
+      Miko_Idle_0: 127947290
       Miko_SurpriseBlue: 748974574
-      Miko_ShootStance: 127947290
+      Miko_Idle_3: 1518865991
+      Gun_Shoot_2: -1989431891
       Gun: 993996320
+      Gun_Shoot_3: 1836934545
       Miko_SurpriseWhite: -1052917686
+      Miko_Defeat_0: 936946578
+      Miko_Defeat_3: -468901245
+      Miko_Defeat_1: -1559977030
+      Gun_Shoot_0: -966857873
+      Miko_Idle_2: 851237729
       Miko_Normal: -697959523
   spritePackingTag: 
   pSDRemoveMatte: 0

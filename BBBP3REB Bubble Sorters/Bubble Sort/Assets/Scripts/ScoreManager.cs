@@ -23,7 +23,7 @@ public class ScoreManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.addScore += addScore;
-        //Bubble.addDropped += addDropped;
+        LoseBox.add500 += addDropped;
     }
 
     private void addDropped(int points)
@@ -41,7 +41,7 @@ public class ScoreManager : MonoBehaviour
     private void OnDisable()
     {
         GameManager.addScore -= addScore;
-        //Bubble.addDropped -= addDropped;
+        LoseBox.add500 -= addDropped;
     }
 
 

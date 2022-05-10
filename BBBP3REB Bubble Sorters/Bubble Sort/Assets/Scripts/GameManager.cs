@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         SetAllBubblesConnectionToFalse();
         SetConnectedBubblesToTrue();
         SetGravityToDisconectedBubbles();
-        
+
     }
 
     #region Drop Disconected Bubbles
@@ -152,6 +152,8 @@ public class GameManager : MonoBehaviour
                 if(!bubble.GetComponent<Rigidbody2D>())
                 {
                     Rigidbody2D rb2d = bubble.gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
+                    bubble.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+                    bubble.tag= "FallingBubble";
                 }       
             }
         }
