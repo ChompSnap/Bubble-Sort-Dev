@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
-        addScore?.Invoke(100 * bubbleSequence.Count);
+        addScore?.Invoke(10 * bubbleSequence.Count);
     }
 
     private void DropDisconectedBubbles()
@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
                 {
                     Rigidbody2D rb2d = bubble.gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
                     bubble.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+                    bubble.gameObject.GetComponent<Rigidbody2D>().collisionDetectionMode = CollisionDetectionMode2D.Discrete;
                     bubble.tag= "FallingBubble";
                 }       
             }
