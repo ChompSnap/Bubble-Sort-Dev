@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("currentScore") > 0) {
+        if(PlayerPrefs.GetInt("currentScore") > 0 && SceneManager.GetActiveScene().name != "Level1") {
             count = PlayerPrefs.GetInt("currentScore");
+        } else {
+            PlayerPrefs.SetInt("currentScore", 0);
         }
         score.text = count.ToString();
     }

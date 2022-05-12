@@ -11,6 +11,10 @@ public class Bubble : MonoBehaviour
     public bool isConnected;
 
     public BubbleColor bubbleColor;
+    private AudioSource bubbleAudio;
+    public AudioClip bubbleWall;
+    public AudioClip bubbleBubble;
+
     //Checks if it collides with a bubble of the same color and pops if it matches 3
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -18,6 +22,9 @@ public class Bubble : MonoBehaviour
         {
             if (!isFixed)
             {
+                bubbleAudio = this.gameObject.GetComponent<AudioSource>();
+                bubbleAudio.clip = bubbleBubble;
+                bubbleAudio.Play(0);
                 HasCollided();
             }
         }
@@ -26,8 +33,18 @@ public class Bubble : MonoBehaviour
         {
             if (!isFixed)
             {
+                bubbleAudio = this.gameObject.GetComponent<AudioSource>();
+                bubbleAudio.clip = bubbleBubble;
+                bubbleAudio.Play(0);
                 HasCollided();
             }
+        }
+
+        if (collision.gameObject.tag == "Wall")
+        {
+            bubbleAudio = this.gameObject.GetComponent<AudioSource>();
+            bubbleAudio.clip = bubbleWall;
+            bubbleAudio.Play(0);
         }
     }
 
