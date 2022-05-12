@@ -119,6 +119,10 @@ public class LevelManager : MonoBehaviour
                     }
                 }
             }
+
+            if(t.position.y <= -1.75) {
+                GameOver();
+            }
         }
 
         colorsInScene = colors;
@@ -135,7 +139,7 @@ public class LevelManager : MonoBehaviour
         bubble.SetParent(bubblesArea);
     }
 
-     public void NextLevel() {
+    public void NextLevel() {
         string sceneName = SceneManager.GetActiveScene().name;
         scoreManager.saveScore();
         if(sceneName != "level5") {
@@ -147,5 +151,9 @@ public class LevelManager : MonoBehaviour
             scoreManager.saveHighScore();
             sceneLoader.LoadScene("Credits");
         }
+    }
+
+    public void GameOver() {
+        sceneLoader.LoadScene("GameOverCredits");
     }
 }
