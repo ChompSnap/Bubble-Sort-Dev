@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Mono.Cecil.Cil;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-
+    public Button home_btn;
     public Shooter shootScript;
     public Transform pointerToLastLine;
 
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        home_btn.onClick.AddListener(Home_btn_Click);
         bubbleSequence = new List<Transform>();
 
         LevelManager.instance.GenerateLevel();
@@ -46,6 +49,10 @@ public class GameManager : MonoBehaviour
             shootScript.canShoot = false;
             shootScript.Shoot();
         }
+    }
+    void Home_btn_Click()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ProcessTurn(Transform currentBubble)
