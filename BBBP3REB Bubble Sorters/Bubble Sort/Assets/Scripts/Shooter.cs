@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Shooter : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class Shooter : MonoBehaviour
     private float lookAngle;
     public bool isSwaping = false;
     public float time = 0.02f;
-
+    int count = 0;
     public void Update()
     {
         //Rotating the launcher
@@ -51,13 +53,42 @@ public class Shooter : MonoBehaviour
 
     public void Shoot()
     {
-        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
-        currentBubble.transform.rotation = transform.rotation;
-        currentBubble.GetComponent<Rigidbody2D>().AddForce(currentBubble.transform.up * speed, ForceMode2D.Impulse);
-        currentBubble.transform.parent = null;
-        firingAnim.Play("GunShoot", 0, 0);
-        currentBubble = null;
-       
+        if(currentBubble.GetComponent<Rigidbody2D>() == null)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
+            currentBubble.transform.rotation = transform.rotation;
+            currentBubble.GetComponent<Rigidbody2D>().AddForce(currentBubble.transform.up * speed, ForceMode2D.Impulse);
+            currentBubble.transform.parent = null;
+            firingAnim.Play("GunShoot", 0, 0);
+            currentBubble = null;
+        }
+        count++;
+        if(count==4)
+        {
+            count = 0;
+            StartCoroutine(StartMove(.1f));
+        }
+
+    }
+    public IEnumerator StartMove(float move)
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(1f);
+        CameraEffects.instance.Shake();
+        canShoot = true;
+        //while(move>=0)
+        //{
+        //    move -= Time.deltaTime;
+        //    GameLevel.transform.position -= new Vector3(0, 20, 0) * Time.deltaTime;
+        //    Manager.transform.position -= new Vector3(0, 20, 0) * Time.deltaTime;
+
+        //    yield return new WaitForSeconds(.09f);
+        //}
+
     }
 
     [ContextMenu("SwapBubbles")]
