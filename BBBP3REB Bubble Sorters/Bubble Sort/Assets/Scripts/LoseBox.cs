@@ -39,10 +39,6 @@ public class LoseBox : MonoBehaviour
             //We destroy the game object so it can't bump into the bubble in the cannon or the one being held 
             Destroy(col.gameObject);
             mikoFaceAnim.Play("HappyFace", 0, 0);
-        }else if (col.CompareTag("LevelBubble"))
-        {
-            //This needs to get finsihed soon because otherwise we don't have a lose condition 
-            Debug.Log("Level bubble is in the box");
         }
     }
     

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public Button home_btn;
+    //public Button home_btn;
     public Shooter shootScript;
     public Transform pointerToLastLine;
 
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        home_btn.onClick.AddListener(Home_btn_Click);
+        //home_btn.onClick.AddListener(Home_btn_Click);
 
         bubbleSequence = new List<Transform>();
 
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
                     Rigidbody2D rb2d = bubble.gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
                     bubble.gameObject.GetComponent<CircleCollider2D>().enabled = true;
                     bubble.tag = "FallingBubble";
-                    Debug.Log("Balls_Falling");
+                    //Debug.Log("Balls_Falling");
                 }
             }
         }

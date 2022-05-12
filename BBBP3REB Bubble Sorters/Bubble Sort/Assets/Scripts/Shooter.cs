@@ -53,27 +53,23 @@ public class Shooter : MonoBehaviour
 
     public void Shoot()
     {
-        if(currentBubble.GetComponent<Rigidbody2D>() == null)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
-            currentBubble.transform.rotation = transform.rotation;
-            currentBubble.GetComponent<Rigidbody2D>().AddForce(currentBubble.transform.up * speed, ForceMode2D.Impulse);
-            currentBubble.transform.parent = null;
-            firingAnim.Play("GunShoot", 0, 0);
-            currentBubble = null;
-        }
+        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
+        currentBubble.transform.rotation = transform.rotation;
+        currentBubble.GetComponent<Rigidbody2D>().AddForce(currentBubble.transform.up * speed, ForceMode2D.Impulse);
+        currentBubble.transform.parent = null;
+        firingAnim.Play("GunShoot", 0, 0);
+        currentBubble = null;
+        /*
         count++;
-        if(count==4)
+        if(count==5)
         {
             count = 0;
             StartCoroutine(StartMove(.1f));
         }
+        */
 
     }
+    
     public IEnumerator StartMove(float move)
     {
         canShoot = false;

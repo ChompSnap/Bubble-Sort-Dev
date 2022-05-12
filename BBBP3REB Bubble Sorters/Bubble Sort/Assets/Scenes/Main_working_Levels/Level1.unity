@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98af43bdf4934424bbea082077f52037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  home_btn: {fileID: 776690091}
   shootScript: {fileID: 569172950}
   pointerToLastLine: {fileID: 1967153786}
   bubbleSequence: []
@@ -3436,6 +3435,7 @@ GameObject:
   - component: {fileID: 776690093}
   - component: {fileID: 776690092}
   - component: {fileID: 776690091}
+  - component: {fileID: 776690094}
   m_Layer: 5
   m_Name: Home_btn
   m_TagString: Untagged
@@ -3507,7 +3507,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 776690092}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776690094}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &776690092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3546,6 +3558,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776690089}
   m_CullTransparentMesh: 1
+--- !u!114 &776690094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776690089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c357cccc3763f5448a9e6147cbbd1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &795930509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6064296615334731846, guid: 16579fbcfaad743fa9349f9fdf9f2c5d,
@@ -4914,6 +4938,8 @@ MonoBehaviour:
   leftLine: {fileID: 453455463422590966, guid: 2ce71e60a05e04955830365bdd843a8d, type: 3}
   rightLine: {fileID: 1022154507335420059, guid: 8ff0ff40d20064b308e2c90b22b03fe4,
     type: 3}
+  sceneLoader: {fileID: 0}
+  scoreManager: {fileID: 0}
 --- !u!224 &1137127813
 RectTransform:
   m_ObjectHideFlags: 0
