@@ -88,6 +88,7 @@ public class LevelManager : MonoBehaviour
         {
             var bubble = Instantiate(bubbles[(int)(Random.Range(0, bubbles.Count * 1000000f) / 1000000f)], bubblesArea);
             bubble.transform.position = t.position;
+            
         }
 
         Destroy(go);

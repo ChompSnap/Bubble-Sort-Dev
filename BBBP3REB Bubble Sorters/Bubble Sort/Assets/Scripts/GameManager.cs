@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
-        addScore?.Invoke(100 * bubbleSequence.Count);
+        addScore?.Invoke(10 * bubbleSequence.Count);
     }
 
     private void DropDisconectedBubbles()
