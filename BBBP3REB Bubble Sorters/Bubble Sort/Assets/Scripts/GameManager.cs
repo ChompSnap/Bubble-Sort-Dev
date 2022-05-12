@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (Transform t in bubbleSequence)
         {
+            this.gameObject.GetComponent<AudioSource>().Play(0);
             Destroy(t.gameObject);
         }
         addScore?.Invoke(10 * bubbleSequence.Count);
