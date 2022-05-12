@@ -12,9 +12,6 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("currentScore") > 0) {
-            count = PlayerPrefs.GetInt("currentScore");
-        }
         score.text = count.ToString();
     }
 
@@ -45,14 +42,6 @@ public class ScoreManager : MonoBehaviour
     {
         GameManager.addScore -= addScore;
         LoseBox.add500 -= addDropped;
-    }
-
-    public void saveScore() {
-        PlayerPrefs.SetInt("currentScore", count);
-    }
-
-    public void saveHighScore() {
-        PlayerPrefs.SetInt("highscore", count);
     }
 
 

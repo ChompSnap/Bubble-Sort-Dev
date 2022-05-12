@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98af43bdf4934424bbea082077f52037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  home_btn: {fileID: 0}
   shootScript: {fileID: 569172950}
   pointerToLastLine: {fileID: 1967153786}
   bubbleSequence: []
@@ -1834,50 +1835,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 367356819}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &485718513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 485718515}
-  - component: {fileID: 485718514}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &485718514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485718513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c357cccc3763f5448a9e6147cbbd1bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &485718515
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485718513}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 550.25, y: 314.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &490199076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4835,8 +4792,6 @@ MonoBehaviour:
   leftLine: {fileID: 453455463422590966, guid: 2ce71e60a05e04955830365bdd843a8d, type: 3}
   rightLine: {fileID: 1022154507335420059, guid: 8ff0ff40d20064b308e2c90b22b03fe4,
     type: 3}
-  sceneLoader: {fileID: 485718514}
-  scoreManager: {fileID: 480094779}
 --- !u!224 &1137127813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7085,6 +7040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603597507}
+  - component: {fileID: 1603597508}
   m_Layer: 0
   m_Name: BubbleArea
   m_TagString: Untagged
@@ -7107,6 +7063,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1603597508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603597506}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6fe213afc0b244f924824a1b5daf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubble_warning: {fileID: 1603597507}
+  click_count: 0
 --- !u!1 &1608115549
 GameObject:
   m_ObjectHideFlags: 0
@@ -7142,8 +7112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23600002, y: 0.9287915}
   m_AnchorMax: {x: 0.363, y: 1}
-  m_AnchoredPosition: {x: -13.070007, y: -3.100006}
-  m_SizeDelta: {x: 108.97005, y: -5.1000185}
+  m_AnchoredPosition: {x: -20.160004, y: -3.100006}
+  m_SizeDelta: {x: 116.06002, y: -5.1000185}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1608115551
 MonoBehaviour:

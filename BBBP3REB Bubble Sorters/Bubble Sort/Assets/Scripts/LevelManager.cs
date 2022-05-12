@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -27,9 +26,6 @@ public class LevelManager : MonoBehaviour
     public GameObject leftLine;
     public GameObject rightLine;
     private bool lastLineIsLeft = true;
-
-    public SceneLoader sceneLoader;
-    public ScoreManager scoreManager;
 
 
     private void Start()
@@ -123,28 +119,11 @@ public class LevelManager : MonoBehaviour
 
         colorsInScene = colors;
         bubblesInScene = newListOfBubbles;
-        if(bubblesInScene.Count == 2) {
-            NextLevel();
-        }
     }
 
     public void SetAsBubbleAreaChild(Transform bubble)
     {
         SnapToNearestGripPosition(bubble);
         bubble.SetParent(bubblesArea);
-    }
-
-    public void NextLevel() {
-        string sceneName = SceneManager.GetActiveScene().name;
-        scoreManager.saveScore();
-        if(sceneName != "level5") {
-            string levelNum = sceneName.Substring(5);
-            int num = int.Parse(levelNum) + 1;
-            string nextLevelName = "Level" + num;
-            sceneLoader.LoadScene(nextLevelName);
-        } else {
-            scoreManager.saveHighScore();
-            sceneLoader.LoadScene("Credits");
-        }
     }
 }
