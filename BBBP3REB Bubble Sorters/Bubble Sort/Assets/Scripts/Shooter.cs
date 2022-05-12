@@ -57,6 +57,7 @@ public class Shooter : MonoBehaviour
         currentBubble.transform.parent = null;
         firingAnim.Play("GunShoot", 0, 0);
         currentBubble = null;
+       
     }
 
     [ContextMenu("SwapBubbles")]

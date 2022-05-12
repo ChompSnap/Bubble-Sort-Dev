@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
     public Button home_btn;
     public Shooter shootScript;
     public Transform pointerToLastLine;
@@ -29,13 +30,16 @@ public class GameManager : MonoBehaviour
 
     public static event bubblePop addScore;
 
+
+
     void Start()
     {
         home_btn.onClick.AddListener(Home_btn_Click);
+
         bubbleSequence = new List<Transform>();
 
         LevelManager.instance.GenerateLevel();
-        
+
         shootScript.canShoot = true;
         shootScript.CreateNextBubble();
     }
@@ -48,19 +52,20 @@ public class GameManager : MonoBehaviour
         {
             shootScript.canShoot = false;
             shootScript.Shoot();
+
         }
     }
+
     void Home_btn_Click()
     {
         SceneManager.LoadScene(0);
     }
-
     public void ProcessTurn(Transform currentBubble)
     {
         bubbleSequence.Clear();
         CheckBubbleSequence(currentBubble);
 
-        if(bubbleSequence.Count >= sequenceSize)
+        if (bubbleSequence.Count >= sequenceSize)
         {
             DestroyBubblesInSequence();
             DropDisconectedBubbles();
@@ -79,7 +84,7 @@ public class GameManager : MonoBehaviour
         Bubble bubbleScript = currentBubble.GetComponent<Bubble>();
         List<Transform> neighbors = bubbleScript.GetNeighbors();
 
-        foreach(Transform t in neighbors)
+        foreach (Transform t in neighbors)
         {
             if (!bubbleSequence.Contains(t))
             {
@@ -96,7 +101,7 @@ public class GameManager : MonoBehaviour
 
     private void DestroyBubblesInSequence()
     {
-        foreach(Transform t in bubbleSequence)
+        foreach (Transform t in bubbleSequence)
         {
             Destroy(t.gameObject);
         }
@@ -117,6 +122,7 @@ public class GameManager : MonoBehaviour
         foreach (Transform bubble in LevelManager.instance.bubblesArea)
         {
             bubble.GetComponent<Bubble>().isConnected = false;
+            //Debug.Log("All_Down");
         }
     }
 
@@ -130,7 +136,7 @@ public class GameManager : MonoBehaviour
         {
             if (hits[i].transform.gameObject.tag.Equals("Bubble"))
                 SetNeighboursConnectionToTrue(hits[i].transform);
-            
+
         }
     }
 
@@ -140,9 +146,9 @@ public class GameManager : MonoBehaviour
         bubbleScript.isConnected = true;
         bubbleSequence.Add(bubble);
 
-        foreach(Transform t in bubbleScript.GetNeighbors())
+        foreach (Transform t in bubbleScript.GetNeighbors())
         {
-            if(!bubbleSequence.Contains(t))
+            if (!bubbleSequence.Contains(t))
             {
                 SetNeighboursConnectionToTrue(t);
             }
@@ -156,12 +162,13 @@ public class GameManager : MonoBehaviour
             if (!bubble.GetComponent<Bubble>().isConnected)
             {
                 bubble.gameObject.GetComponent<CircleCollider2D>().enabled = false;
-                if(!bubble.GetComponent<Rigidbody2D>())
+                if (!bubble.GetComponent<Rigidbody2D>())
                 {
                     Rigidbody2D rb2d = bubble.gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
                     bubble.gameObject.GetComponent<CircleCollider2D>().enabled = true;
-                    bubble.tag= "FallingBubble";
-                }       
+                    bubble.tag = "FallingBubble";
+                    Debug.Log("Balls_Falling");
+                }
             }
         }
     }
